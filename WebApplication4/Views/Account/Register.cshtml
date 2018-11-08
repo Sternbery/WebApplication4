@@ -14,6 +14,14 @@
         <h4>Create a new account.</h4>
         <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+            <div class="reginfo"><h4>User Name</h4></div>
+            <div class="col-md-10">
+                <div class="enterboxes">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="reginfo"><h4>Email</h4></div>
             <div class="col-md-10">
