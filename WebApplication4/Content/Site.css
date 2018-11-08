@@ -1,12 +1,20 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+   background-color: forestgreen;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin: auto;
+    text-align: center;
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 2%;
+    /*padding-left: 100px;
+    padding-right: 100px;*/
+    width: 70%;
+    border-left: 1px black groove;
+    border-right: 1px black groove;
+    background-color: white;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +29,183 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+
+
+/*footer*/
+.footer {
+    text-align: center;
+    margin: auto;
+    width: 70%;
+    background-color: black;
+    padding-bottom: 1%;
+}
+
+.footerlinks {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    margin: auto;
+    padding-top: 1%;
+}
+
+
+/* Navbar and header img*/
+/*.header {
+    margin: auto;
+    width: 70%;
+    background-color: black;
+}*/
+
+/* CUSTOM NAV BAR BELOW*/
+.header {
+    text-align: center;
+    background-color: black;
+    margin: auto;
+    margin-top: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    height: 100%;
+    width: 70%;
+}
+
+.header img {
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8%;
+    height: 100%;
+    text-align: center;
+}
+
+/*--------------------------------------------Menu Nav Bar------------------------------------*/
+.menu {
+    font-family: 'Cinzel', serif;    
+    list-style-type: none;
+    overflow: hidden;
+    margin: auto;
+    background-color: black;
+    text-decoration: none;
+    padding-left: 2%;
+    padding-right: 2%;
+    height: 61px;
+    width: 70%;
+}
+
+.menu li {
+    display: inline;
+}
+
+.menu li a {
+    line-height: 65px;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none; 
+}
+
+
+
+
+
+/* login css area */
+.body-contentL {
+    text-align: center;
+    border-radius: 1%;
+    border: 1px groove gray;
+    height: 600px;
+    width: 375px;
+    margin: auto;
+    background-color: white;
+    /*background-color: hsla(112, 8%, 44%, 0.19);*/
+    margin-bottom: 10px;
+}
+
+.loginf {
+    text-align: center;
+    align-content: center;
+    margin: auto;
+    
+}
+
+.loginfo {
+    padding-left: 45px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.enterboxes {
+    padding-left: 50px;
+}
+
+.loginbut {
+    padding-left: 135px;
+}
+.checkboxl {
+    padding-left: 50px;
+}
+.checkboxtext {
+    padding-left: 55px;
+}
+
+.logback {
+    padding-top: 90px;
+    /*background-image: url("paper.gif");*/
+    /*background-color: hsla(240, 67%, 46%, 0.46);*/
+}
+
+
+
+/* Regeister css area */
+.registerf {
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
+
+.registerbut {
+    padding-right: 68px;
+}
+
+.reginfo {    
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+/*FAQ AREA*/
+.FAQ{
+    margin: auto;
+    text-align: center;
+
+}
+.questions{
+    padding: 5px;
+}
+
+
+/*PP area*/
+.PP{
+    margin: auto;
+    text-align: center;
+}
+
+/*About area*/
+.About {
+    margin: auto;
+    text-align: center;
+}
+
+
+/*CONTACT*/
+.msgBox{
+    padding-left: 80px;
+}
+
+.sendbut{
+    padding-right: 180px;
 }

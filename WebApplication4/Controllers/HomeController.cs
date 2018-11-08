@@ -26,5 +26,19 @@ namespace WebApplication4.Controllers
 
             return View();
         }
+
+        public ActionResult FAQ()
+        {
+            ViewBag.Message = "Your application FAQ page.";
+
+            return View();
+        }
+
+        public ActionResult PrivacyPolicy()
+        {
+            ViewBag.Message = "Your privacy policy.";
+
+            return View();
+        }
     }
 }
