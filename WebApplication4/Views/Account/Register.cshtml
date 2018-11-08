@@ -1,41 +1,60 @@
 ﻿@model WebApplication4.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Survey Says";
+}
+@{
+    Layout = "_LayoutLogin.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
+<div class="registerf">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="reginfo"><h4>Email</h4></div>
+            <div class="col-md-10">
+                <div class="enterboxes">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="reginfo"><h4>Password</h4></div>
+            <div class="col-md-10">
+                <div class="enterboxes">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="reginfo"><h4>Confirm Password</h4></div>
+            <div class="col-md-10">
+                <div class="enterboxes">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            <div class="col-md-10">
+                <div class="enterboxes">
+                    @*@Html.CheckBoxFor( m => m.Role )*@
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="registerbut">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
-
+    }
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
