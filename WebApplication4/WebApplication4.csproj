@@ -282,6 +282,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\SurveyGiverController.cs" />
     <Compile Include="Views\SurveysTakerController.cs" />
     <Compile Include="Views\SurveysController.cs" />
   </ItemGroup>
@@ -379,13 +380,6 @@
     <Content Include="Views\Surveys\Details.cshtml" />
     <Content Include="Views\Surveys\Edit.cshtml" />
     <Content Include="Views\Surveys\Index.cshtml" />
-    <Content Include="Views\Account\RegisterGiver.cshtml" />
-    <Content Include="Views\Home\AboutGiver.cshtml" />
-    <Content Include="Views\Home\ContactGiver.cshtml" />
-    <Content Include="Views\Home\FAQGiver.cshtml" />
-    <Content Include="Views\Home\PrivacyPolicyGiver.cshtml" />
-    <Content Include="Views\Manage\IndexGiver.cshtml" />
-    <Content Include="Views\Account\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
