@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -12,21 +12,16 @@
 
     <!--Header-->
     <div class='header'>
-        <img src='img/logo.png'>
+        <img src='\Content\img\logo.png'>
     </div>
 
     <!--Menu-->
     <div class='menu'>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        @Html.ActionLink("Home", "Index", "Home")
-                    </li>
-
-
 
                     <li>
-                        @Html.ActionLink("Find a Survey", "Index", "Surveys")
+                        @Html.ActionLink("Find a Survey", "Index", "SurveysTaker")
                     </li> 
                     @*
                     <li>
@@ -75,9 +70,10 @@
                         @Html.ActionLink("About", "About", "Home")  |  @Html.ActionLink("Contact", "Contact", "Home")
                         |  @Html.ActionLink("FAQ", "FAQ", "Home")  |  @Html.ActionLink("Privacy Policy", "PrivacyPolicy", "Home")
                     </p>
-                </div>
 
-                <p>&copy; @DateTime.Now.Year - Survey Says</p>
+
+                    <p>&copy; @DateTime.Now.Year - Survey Says</p>
+                </div>
         </div>
         @*<p>&copy; @DateTime.Now.Year - Survey Says</p>*@
         </footer>

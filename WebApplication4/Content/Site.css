@@ -1,5 +1,5 @@
 ﻿body {
-   background-color: forestgreen;
+    background-image: url(img/sides2.png);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -12,8 +12,6 @@
     /*padding-left: 100px;
     padding-right: 100px;*/
     width: 70%;
-    border-left: 1px black groove;
-    border-right: 1px black groove;
     background-color: white;
 }
 
@@ -36,16 +34,18 @@ textarea {
 
 /*footer*/
 .footer {
+    text-decoration: none;
+    color: sandybrown;
     text-align: center;
     margin: auto;
     width: 70%;
-    background-color: black;
+    background-color: gainsboro;
     padding-bottom: 1%;
 }
 
 .footerlinks {
     text-decoration: none;
-    color: white;
+    color: sandybrown;
     text-align: center;
     margin: auto;
     padding-top: 1%;
@@ -61,10 +61,10 @@ textarea {
 
 /* CUSTOM NAV BAR BELOW*/
 .header {
+    color: sandybrown;
     text-align: center;
-    background-color: black;
+    background-color: gainsboro;
     margin: auto;
-    
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 1%;
@@ -85,11 +85,11 @@ textarea {
 
 /*--------------------------------------------Menu Nav Bar------------------------------------*/
 .menu {
-    font-family: 'Cinzel', serif;    
+    color: sandybrown;    
     list-style-type: none;
     overflow: hidden;
     margin: auto;
-    background-color: black;
+    background-color: gainsboro;
     text-decoration: none;
     padding-left: 2%;
     padding-right: 2%;
@@ -99,14 +99,17 @@ textarea {
 
 .menu li {
     display: inline;
+    color: sandybrown;
+    background-color: gainsboro;
 }
 
 .menu li a {
-    line-height: 65px;
-    color: white;
-    text-align: center;
-    padding: 10px 12px;
-    text-decoration: none; 
+        line-height: 65px;
+        color: white;
+        text-align: center;
+        padding: 10px 12px;
+        text-decoration: none;
+        background-color: gainsboro;
 }
 
 
@@ -208,4 +211,12 @@ textarea {
 
 .sendbut{
     padding-right: 180px;
+}
+
+
+/*change pw page*/
+.pwinfo {
+    padding-left: 45px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }

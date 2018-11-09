@@ -2,12 +2,15 @@
 @{
     ViewBag.Title = "Manage";
 }
+@{
+    Layout = "_Layoutgiver.cshtml";
+}
 
 <h2>My Account</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Survey Taker Account</h4>
+    <h4>Survey Giver Account</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -64,7 +67,7 @@
             }
             else
             {
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")]</text>
+                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
             }
         </dd>
 

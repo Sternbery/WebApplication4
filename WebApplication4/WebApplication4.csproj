@@ -294,6 +294,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\sides1.png" />
+    <Content Include="Content\img\sides2.png" />
+    <Content Include="Content\img\sides3.png" />
     <Content Include="Models\SurveyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SurveyModel.edmx</DependentUpon>
@@ -364,7 +368,7 @@
     <Content Include="Views\Shared\_Layoutgiver.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
-    <Content Include="Views\Account\_LayoutLogin.cshtml" />
+    <Content Include="Views\Manage\_LayoutLogin.cshtml" />
     <Content Include="Views\SurveysTaker\Create.cshtml" />
     <Content Include="Views\SurveysTaker\Delete.cshtml" />
     <Content Include="Views\SurveysTaker\Details.cshtml" />
@@ -375,6 +379,13 @@
     <Content Include="Views\Surveys\Details.cshtml" />
     <Content Include="Views\Surveys\Edit.cshtml" />
     <Content Include="Views\Surveys\Index.cshtml" />
+    <Content Include="Views\Account\RegisterGiver.cshtml" />
+    <Content Include="Views\Home\AboutGiver.cshtml" />
+    <Content Include="Views\Home\ContactGiver.cshtml" />
+    <Content Include="Views\Home\FAQGiver.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicyGiver.cshtml" />
+    <Content Include="Views\Manage\IndexGiver.cshtml" />
+    <Content Include="Views\Account\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
