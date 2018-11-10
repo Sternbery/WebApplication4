@@ -22,11 +22,17 @@
 
                     <li>
                         @Html.ActionLink("Find a Survey", "Index", "SurveysTaker")
-                    </li> 
-                    @*
-                    <li>
-                        @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
                     </li>
+                    @*<li>
+                        @Html.ActionLink("Surveys", "Index", "Surveys")
+                    </li>*@
+                    <li>
+                        @Html.ActionLink("Create a Survey", "Create", "SurveyGiver")
+                    </li>
+                    @*
+        <li>
+            @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
+        </li>
                     *@
                 </ul>
             @Html.Partial("_LoginPartial")

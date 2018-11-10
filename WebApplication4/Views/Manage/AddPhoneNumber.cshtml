@@ -17,14 +17,18 @@
     <div class="form-group">
         <div class="pwinfo"><h4>Phone Number</h4></div>
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+            <div class="enterboxes">
+                @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+            </div>
+            </div>
         </div>
-    </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Submit" />
+            <div class="cpwbut">
+                <input type="submit" class="btn btn-default" value="Submit" />
+            </div>
+            </div>
         </div>
-    </div>
 }
 
 @section Scripts {

@@ -380,6 +380,11 @@
     <Content Include="Views\Surveys\Details.cshtml" />
     <Content Include="Views\Surveys\Edit.cshtml" />
     <Content Include="Views\Surveys\Index.cshtml" />
+    <Content Include="Views\SurveyGiver\Create.cshtml" />
+    <Content Include="Views\SurveyGiver\Delete.cshtml" />
+    <Content Include="Views\SurveyGiver\Details.cshtml" />
+    <Content Include="Views\SurveyGiver\Edit.cshtml" />
+    <Content Include="Views\SurveyGiver\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
