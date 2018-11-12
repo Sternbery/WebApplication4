@@ -391,6 +391,7 @@
     <Content Include="Views\Home\ContactGiver.cshtml" />
     <Content Include="Views\Home\FAQGiver.cshtml" />
     <Content Include="Views\Home\PrivacyPolicyGiver.cshtml" />
+    <Content Include="Views\Manage\_Layoutgiver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
