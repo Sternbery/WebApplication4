@@ -385,6 +385,8 @@
     <Content Include="Views\SurveyGiver\Details.cshtml" />
     <Content Include="Views\SurveyGiver\Edit.cshtml" />
     <Content Include="Views\SurveyGiver\Index.cshtml" />
+    <Content Include="Views\Account\RegisterGiver.cshtml" />
+    <Content Include="Views\Manage\IndexGiver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

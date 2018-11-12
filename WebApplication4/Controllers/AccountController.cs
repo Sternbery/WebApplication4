@@ -175,7 +175,7 @@ namespace WebApplication4.Controllers
             return View(model);
         }
 
-        /*
+        
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult RegisterGiver()
@@ -184,11 +184,11 @@ namespace WebApplication4.Controllers
         }
 
         //
-        // POST: /Account/Register
+        // POST: /Account/RegisterGiver
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RegisterGiver(RegisterViewModel model)
+        public async Task<ActionResult> RegisterGiver(RegisterGiverViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -215,7 +215,7 @@ namespace WebApplication4.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        */
+        
 
         //
         // GET: /Account/ConfirmEmail

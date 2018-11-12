@@ -21,7 +21,20 @@
                     @*<h4>Log In.</h4>*@
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+                    /*
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="loginfo"><h4>User Name</h4></div>
+                            @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+                        </div>
+                        <div class="col-md-10">
+                            <div class="enterboxes">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    */
                     <div class="form-group">
                         <div class="col-md-10">
                             <div class="loginfo"><h4>Email</h4></div>

@@ -1,4 +1,4 @@
-﻿@model WebApplication4.Models.RegisterViewModel
+﻿@model WebApplication4.Models.RegisterGiverViewModel
 @{
     ViewBag.Title = "Survey Says";
 }
@@ -6,7 +6,7 @@
     Layout = "_LayoutLogin.cshtml";
 }
 
-<h2>Register As A Survey Giver</h2>
+<h2>Survey Giver Register</h2>
 <div class="registerf">
     @using (Html.BeginForm("RegisterGiver", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
@@ -57,7 +57,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <div class="registerbut">
-                    <input type="submit" class="btn btn-default" value="RegisterGiver" />
+                    <input type="submit" class="btn btn-default" value="Register" />
                 </div>
             </div>
         </div>
