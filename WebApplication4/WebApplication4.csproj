@@ -282,9 +282,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Views\SurveyGiverController.cs" />
-    <Compile Include="Views\SurveysTakerController.cs" />
-    <Compile Include="Views\SurveysController.cs" />
+    <Compile Include="Controllers\SurveyGiverController.cs" />
+    <Compile Include="Controllers\SurveysTakerController.cs" />
+    <Compile Include="Controllers\SurveysController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
