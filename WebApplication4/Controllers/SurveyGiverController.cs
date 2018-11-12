@@ -17,6 +17,10 @@ namespace WebApplication4.Views
         // GET: SurveyGiver
         public ActionResult Index()
         {
+            var user = System.Web.HttpContext.Current.User;
+            if (user.IsInRole("Taker")) {
+                return RedirectToRoute("SurveyTaker/Index");
+            }
             var surveys = db.Surveys.Include(s => s.AspNetUser);
             return View(surveys.ToList());
         }
