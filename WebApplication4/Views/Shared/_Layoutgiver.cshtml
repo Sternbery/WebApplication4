@@ -12,24 +12,26 @@
 
     <!--Header-->
     <div class='header'>
-        <img src='\Content\img\logo.png'>
+        <img src='\Content\img\logo.png' height="42" width="42">
     </div>
 
     <!--Menu-->
     <div class='menu'>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-
                 <li>
-                    @Html.ActionLink("Make a Survey", "Index", "Surveys")
+                    @Html.ActionLink("View Created Surveys", "Index", "Surveys")
+                </li>
+                <li>
+                    @Html.ActionLink("Create a Survey", "Create", "SurveyGiver")
                 </li>
                 @*
-                    <li>
-                        @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
-                    </li>
+        <li>
+            @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
+        </li>
                 *@
             </ul>
-            @Html.Partial("_LoginPartial")
+            @Html.Partial("_LoginPartialGiver")
         </div>
     </div>
 
