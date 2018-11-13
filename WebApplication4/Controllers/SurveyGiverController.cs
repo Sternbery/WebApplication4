@@ -13,13 +13,14 @@ namespace WebApplication4.Views
     public class SurveyGiverController : Controller
     {
         private SurveySaysDB2Entities db = new SurveySaysDB2Entities();
+       
 
         // GET: SurveyGiver
         public ActionResult Index()
         {
             var user = System.Web.HttpContext.Current.User;
-            if (user.IsInRole("Taker")) {
-                return RedirectToRoute("SurveyTaker/Index");
+            if (!user.IsInRole("Giver")) {
+                return RedirectToAction("Index", "SurveysTaker");
             }
             var surveys = db.Surveys.Include(s => s.AspNetUser);
             return View(surveys.ToList());
