@@ -20,7 +20,7 @@ namespace WebApplication4.Views
         {
             var user = System.Web.HttpContext.Current.User;
             if (!user.IsInRole("Giver")) {
-                return RedirectToAction("Index", "SurveysTaker");
+                return RedirectToAction("Index", "SurveyTaker");
             }
             var surveys = db.Surveys.Include(s => s.AspNetUser);
             return View(surveys.ToList());
