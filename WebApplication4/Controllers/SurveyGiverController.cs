@@ -18,11 +18,10 @@ namespace WebApplication4.Views
         // GET: SurveyGiver
         public ActionResult Index()
         {
-            if (!user.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("", "Account");
 
-            var user = System.Web.HttpContext.Current.User;
-            if (!user.IsInRole("Giver")) {
+            if (!User.IsInRole("Giver")) {
                 return RedirectToAction("Index", "SurveyTaker");
             }
             var surveys = db.Surveys.Include(s => s.AspNetUser);
@@ -32,6 +31,14 @@ namespace WebApplication4.Views
         // GET: SurveyGiver/Details/5
         public ActionResult Details(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("", "Account");
+
+            if (!User.IsInRole("Giver"))
+            {
+                return RedirectToAction("Index", "SurveyTaker");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -47,6 +54,14 @@ namespace WebApplication4.Views
         // GET: SurveyGiver/Create
         public ActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("", "Account");
+
+            if (!User.IsInRole("Giver"))
+            {
+                return RedirectToAction("Index", "SurveyTaker");
+            }
+
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }

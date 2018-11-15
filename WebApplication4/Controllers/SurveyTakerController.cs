@@ -10,26 +10,21 @@ using WebApplication4.Models;
 
 namespace WebApplication4.Views
 {
-    public class SurveysTakerController : Controller
+    public class SurveyTakerController : Controller
     {
         private SurveySaysDB2Entities db = new SurveySaysDB2Entities();
 
         // GET: SurveysTaker
         public ActionResult Index()
         {
-            var user = System.Web.HttpContext.Current.User;
-
-            if (!user.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("","Account");
 
-            var isTaker = user.IsInRole("Taker");
-            var isGiver = user.IsInRole("Giver");
-            var isAdmin = user.IsInRole("Administrator");
-
-            if (!user.IsInRole("Taker"))
+            if (!User.IsInRole("Taker"))
             {
                 return RedirectToAction("Index", "SurveyGiver");
             }
+
             var surveys = db.Surveys.Include(s => s.AspNetUser);
             return View(surveys.ToList());
         }
@@ -37,6 +32,14 @@ namespace WebApplication4.Views
         // GET: SurveysTaker/Details/5
         public ActionResult Details(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("", "Account");
+
+            if (!User.IsInRole("Taker"))
+            {
+                return RedirectToAction("Index", "SurveyGiver");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
