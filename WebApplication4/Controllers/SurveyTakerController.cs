@@ -18,7 +18,15 @@ namespace WebApplication4.Views
         public ActionResult Index()
         {
             var user = System.Web.HttpContext.Current.User;
-            if (!user.IsInRole("Giver"))
+
+            if (!user.Identity.IsAuthenticated)
+                return RedirectToAction("","Account");
+
+            var isTaker = user.IsInRole("Taker");
+            var isGiver = user.IsInRole("Giver");
+            var isAdmin = user.IsInRole("Administrator");
+
+            if (!user.IsInRole("Taker"))
             {
                 return RedirectToAction("Index", "SurveyGiver");
             }

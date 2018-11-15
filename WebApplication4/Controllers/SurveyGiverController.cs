@@ -18,6 +18,9 @@ namespace WebApplication4.Views
         // GET: SurveyGiver
         public ActionResult Index()
         {
+            if (!user.Identity.IsAuthenticated)
+                return RedirectToAction("", "Account");
+
             var user = System.Web.HttpContext.Current.User;
             if (!user.IsInRole("Giver")) {
                 return RedirectToAction("Index", "SurveyTaker");
