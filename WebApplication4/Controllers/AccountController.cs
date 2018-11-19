@@ -86,14 +86,14 @@ namespace WebApplication4.Controllers
             {
                 case SignInStatus.Success:
 
-                    if (User.IsInRole("Taker"))
+                    if (!User.IsInRole("Taker"))
                     {
-                        return RedirectToAction("Index", "Manage");
+                        return RedirectToAction("Index", "SurveyGiver");
                     }
                     else
                     {
-                        return RedirectToAction("IndexGiver", "Manage");
-                    }                   
+                        return RedirectToAction("Index", "SurveysTaker");
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

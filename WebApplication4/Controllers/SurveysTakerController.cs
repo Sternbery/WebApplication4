@@ -10,7 +10,7 @@ using WebApplication4.Models;
 
 namespace WebApplication4.Views
 {
-    public class SurveyTakerController : Controller
+    public class SurveysTakerController : Controller
     {
         private SurveySaysDB2Entities db = new SurveySaysDB2Entities();
 
