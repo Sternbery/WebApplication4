@@ -140,4 +140,12 @@ namespace WebApplication4.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+
+    //Models for binding survey info
+    public class SurveyQuestionPassModel {
+        [Required]
+        public int SurveyID { get; set; }
+
+    }
 }
