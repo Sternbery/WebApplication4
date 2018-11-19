@@ -92,7 +92,7 @@ namespace WebApplication4.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "SurveysTaker");
+                        return RedirectToAction("Index", "SurveyTaker");
                     }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
