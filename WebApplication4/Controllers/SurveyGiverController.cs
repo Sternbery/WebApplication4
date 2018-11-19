@@ -57,8 +57,12 @@ namespace WebApplication4.Views
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("", "Account");
 
+            
+
             if (!User.IsInRole("Giver"))
             {
+                if (!User.IsInRole("Taker"))
+                    return View("~/Views/Shared/Error.cshtml",new HandleErrorInfo(new RowNotInTableException("Current User has No Roles"),"SurveyGiver","Create"));
                 return RedirectToAction("Index", "SurveyTaker");
             }
 

@@ -6,6 +6,11 @@ namespace WebApplication4
 {
     public partial class Startup
     {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            
+        }
+
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);

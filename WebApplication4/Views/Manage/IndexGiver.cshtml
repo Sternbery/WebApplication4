@@ -16,12 +16,22 @@
 
         <dt>UserName:</dt>
         <dd>
-           
+
         </dd>
         <dt>Email:</dt>
         <dd>
 
         </dd>
+        @{var roles = new string[] { "Taker", "Giver", "Administrator" };}
+
+        @foreach (var rol in roles)
+        {
+            <dt>@rol:</dt>
+            <dd>
+                @User.IsInRole(rol)
+            </dd>
+        }
+
 
         <dt>Password:</dt>
         <dd>
