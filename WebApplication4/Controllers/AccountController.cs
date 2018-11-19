@@ -210,6 +210,10 @@ namespace WebApplication4.Controllers
 
                     var roleResult = UserManager.AddToRole(user.Id, "Giver");
 
+                    if(! roleResult.Succeeded)
+                    return View("~/Views/Shared/Error.cshtml",
+                        new HandleErrorInfo(new Exception("Current User has No Roles"), "SurveyGiver", "Create"));
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

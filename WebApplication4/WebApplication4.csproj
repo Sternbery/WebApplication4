@@ -397,6 +397,7 @@
     <Content Include="Views\Home\_Layoutgiver.cshtml" />
     <Content Include="Views\Surveys\_Layoutgiver.cshtml" />
     <Content Include="Views\SurveyGiver\_Layoutgiver.cshtml" />
+    <Content Include="Views\SurveyGiver\EditQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
