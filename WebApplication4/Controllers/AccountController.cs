@@ -85,7 +85,15 @@ namespace WebApplication4.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    if (User.IsInRole("Taker"))
+                    {
+                        return RedirectToAction("Index", "Manage");
+                    }
+                    else
+                    {
+                        return RedirectToAction("IndexGiver", "Manage");
+                    }                   
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
