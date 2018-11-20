@@ -14,7 +14,7 @@
 
         <dt>User Name:</dt>
         <dd>
-            @Html.Display(User.Identity.GetUserName())
+            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </dd>
         <dt>Email:</dt>
         <dd>

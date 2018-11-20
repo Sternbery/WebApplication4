@@ -11,6 +11,7 @@ namespace WebApplication4.Controllers
         public ActionResult Index()
         {
             return View();
+           
         }
 
         public ActionResult About()
