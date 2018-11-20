@@ -1,0 +1,42 @@
+﻿@model WebApplication4.Models.SurveyMAQ
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SurveyMAQ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ChoiceOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChoiceOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyQuestion.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurveyQuestion.Text)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAQID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
