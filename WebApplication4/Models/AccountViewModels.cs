@@ -147,5 +147,40 @@ namespace WebApplication4.Models
         [Required]
         public int SurveyID { get; set; }
 
+        public int QuestionID { get; set; }
+
+        [Required]
+        public string Text { get; set; }
+
+        [Required]
+        public int QuestionTypeID { get; set; }
+
+        public string SurveyName { get; set; }
+
+        public List<SurveyMultipleChoicePassModel> MultiChoice { get; set; }
+        public List<SurveyMultipleAnswerPassModel> MultiAnswer { get; set; }
+
+        public SurveyQuestion MakeSurveyQuestion() {
+            return new SurveyQuestion { QuestionID = this.QuestionID, SurveyID = this.SurveyID, Text = this.Text, QuestionTypeID = this.QuestionTypeID };
+        }
+    }
+
+    public class SurveyMultipleChoicePassModel
+    {
+        [Required]
+        public int QuestionID { get; set; }
+        [Required]
+        public int ChoiceOrder { get; set; }
+        [Required]
+        public string AnswerText { get; set; }
+    }
+    public class SurveyMultipleAnswerPassModel
+    {
+        [Required]
+        public int QuestionID { get; set; }
+        [Required]
+        public int ChoiceOrder { get; set; }
+        [Required]
+        public string AnswerText { get; set; }
     }
 }

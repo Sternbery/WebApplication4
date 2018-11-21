@@ -40,7 +40,7 @@ namespace WebApplication4.Controllers
         // GET: SurveyQuestions/Create
         public ActionResult Create()
         {
-            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID");
+            ViewBag.SurveyID = new SelectList(db.Surveys, "Name", "UserID");
             ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName");
             return View();
         }
@@ -50,18 +50,19 @@ namespace WebApplication4.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "QuestionID,SurveyID,Text,QuestionTypeID")] SurveyQuestion surveyQuestion)
+        public async Task<ActionResult> Create([Bind(Include = "QuestionID,SurveyID,Text,QuestionTypeID")] SurveyQuestionPassModel passModel)
         {
             if (ModelState.IsValid)
             {
+                var surveyQuestion = passModel.MakeSurveyQuestion();
                 db.SurveyQuestions.Add(surveyQuestion);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
-            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
-            return View(surveyQuestion);
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", passModel.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", passModel.QuestionTypeID);
+            return View(passModel.MakeSurveyQuestion());
         }
 
         // GET: SurveyQuestions/Edit/5
@@ -78,6 +79,7 @@ namespace WebApplication4.Controllers
             }
             ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
             ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+            
             return View(surveyQuestion);
         }
 
@@ -86,17 +88,18 @@ namespace WebApplication4.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "QuestionID,SurveyID,Text,QuestionTypeID")] SurveyQuestion surveyQuestion)
+        public async Task<ActionResult> Edit([Bind(Include = "QuestionID,SurveyID,Text,QuestionTypeID")] SurveyQuestionPassModel passModel)
         {
             if (ModelState.IsValid)
             {
+                var surveyQuestion = passModel.MakeSurveyQuestion();
                 db.Entry(surveyQuestion).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
-            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
-            return View(surveyQuestion);
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", passModel.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", passModel.QuestionTypeID);
+            return View(passModel.MakeSurveyQuestion());
         }
 
         // GET: SurveyQuestions/Delete/5
