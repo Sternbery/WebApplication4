@@ -11,7 +11,8 @@ namespace WebApplication4.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SurveyQuestion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -38,6 +39,8 @@ namespace WebApplication4.Models
         public virtual ICollection<SurveyMCA> SurveyMCAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SurveyMCQ> SurveyMCQs { get; set; }
+
+        [Display(Name = "Question Type")]
         public virtual TypeEnum TypeEnum { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SurveySAA> SurveySAAs { get; set; }

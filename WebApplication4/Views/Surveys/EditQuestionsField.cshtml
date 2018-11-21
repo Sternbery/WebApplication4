@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication4.Models.SurveyQuestion>
+
+@{
+    int id = ViewBag.SurveyID;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeEnum.TypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit/"+item.QuestionID, "SurveyQuestions") |
+            @Html.ActionLink("Details", "Details/"+item.QuestionID ,"SurveyQuestions") |
+            @Html.ActionLink("Delete", "Delete/"+item.QuestionID, "SurveyQuestions")
+        </td>
+    </tr>
+}
+    <tr>
+        <td colspan="3"><p>
+    @Html.ActionLink("Create New", "Create/"+id,"SurveyQuestions")
+</p></td>
+    </tr>
+
+</table>

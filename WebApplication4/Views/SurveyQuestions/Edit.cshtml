@@ -24,7 +24,7 @@
             <select class="form-control" id="SurveyID" name="SurveyID">
                 @foreach (WebApplication4.Models.Survey s in SurveyIDs.Items)
                 {
-                    <option value="@s.SurveyID">@s.Name</option>
+                    <option value="@s.SurveyID" @(s.SurveyID==Model.SurveyID?"Selected":"") >@s.Name</option>
                 }
             </select>
             @Html.ValidationMessageFor(model => model.SurveyID, "", new { @class = "text-danger" })
@@ -57,14 +57,14 @@
             </th>
             <th></th>
 
-            @foreach (var item in Model.SurveyMAQs)
+            @foreach (var item in Model.SurveyMAQs.OrderBy(i=>i.ChoiceOrder))
             {
             <tr>
-                <td><input class="text-box single-line" id="@item.MAQID" name="" type="text" value="@item.Text"></td>
+                <td>@item.Text</td>
             </tr>
             }
             <tr>
-                <td>@Html.ActionLink("Create New","Create","SurveyMAQs")</td>
+                <td>@Html.ActionLink("Create New","Create/"+Model.QuestionID,"SurveyMAQs")</td>
             </tr>
 
         </table>
@@ -79,7 +79,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Survey", "Edit/" + Model.SurveyID, "Surveys")<br/>
+    @Html.ActionLink("Back to Survey List", "Index", "Surveys")
 </div>
 
 @section Scripts {

@@ -38,9 +38,19 @@ namespace WebApplication4.Controllers
         }
 
         // GET: SurveyQuestions/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.SurveyID = new SelectList(db.Surveys, "Name", "UserID");
+
+            if (id == null)
+            {
+                ViewBag.SurveyID = new SelectList(db.Surveys, "Name", "UserID");
+                
+            }
+            else
+            {
+                ViewBag.SurveyID = id;
+                ViewBag.SurveyName = db.Surveys.Find(id).Name;
+            }
             ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName");
             return View();
         }

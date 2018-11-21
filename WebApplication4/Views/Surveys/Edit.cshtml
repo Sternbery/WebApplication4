@@ -60,6 +60,10 @@
             </div>
         </div>
 
+        <h3>Questions</h3>
+        @{ViewBag.SurveyID = Model.SurveyID;}
+        @Html.Partial("EditQuestionsField", Model.SurveyQuestions);
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

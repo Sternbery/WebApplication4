@@ -74,6 +74,7 @@ namespace WebApplication4.Views
                 return HttpNotFound();
             }
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", survey.UserID);
+            ViewBag.Questions = survey.SurveyQuestions;
             return View(survey);
         }
 
