@@ -297,9 +297,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\img\sides1.png" />
     <Content Include="Content\img\sides2.png" />
-    <Content Include="Content\img\sides3.png" />
     <Content Include="Models\SurveyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SurveyModel.edmx</DependentUpon>
@@ -376,11 +374,6 @@
     <Content Include="Views\Surveys\Details.cshtml" />
     <Content Include="Views\Surveys\Edit.cshtml" />
     <Content Include="Views\Surveys\Index.cshtml" />
-    <Content Include="Views\SurveyGiver\Create.cshtml" />
-    <Content Include="Views\SurveyGiver\Delete.cshtml" />
-    <Content Include="Views\SurveyGiver\Details.cshtml" />
-    <Content Include="Views\SurveyGiver\Edit.cshtml" />
-    <Content Include="Views\SurveyGiver\Index.cshtml" />
     <Content Include="Views\Account\RegisterGiver.cshtml" />
     <Content Include="Views\Manage\IndexGiver.cshtml" />
     <Content Include="Views\Home\AboutGiver.cshtml" />
@@ -392,8 +385,6 @@
     <Content Include="Views\Account\_LayoutLogin.cshtml" />
     <Content Include="Views\Home\_Layoutgiver.cshtml" />
     <Content Include="Views\Surveys\_Layoutgiver.cshtml" />
-    <Content Include="Views\SurveyGiver\_Layoutgiver.cshtml" />
-    <Content Include="Views\SurveyGiver\EditQuestion.cshtml" />
     <Content Include="Views\SurveyQuestions\Index.cshtml" />
     <Content Include="Views\SurveyQuestions\Create.cshtml" />
     <Content Include="Views\SurveyTaker\Create.cshtml" />
@@ -401,6 +392,13 @@
     <Content Include="Views\SurveyTaker\Details.cshtml" />
     <Content Include="Views\SurveyTaker\Edit.cshtml" />
     <Content Include="Views\SurveyTaker\Index.cshtml" />
+    <Content Include="Views\SurveyGiver\Create.cshtml" />
+    <Content Include="Views\SurveyGiver\Delete.cshtml" />
+    <Content Include="Views\SurveyGiver\Details.cshtml" />
+    <Content Include="Views\SurveyGiver\Edit.cshtml" />
+    <Content Include="Views\SurveyGiver\EditQuestion.cshtml" />
+    <Content Include="Views\SurveyGiver\Index.cshtml" />
+    <Content Include="Views\SurveyGiver\_Layoutgiver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

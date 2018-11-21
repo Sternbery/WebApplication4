@@ -8,81 +8,81 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-
-    <!--Header-->
-    <div class='header'>
-       
-        <img src='\Content\img\logo.png' height="42" width="42">
-    </div>
-
-    <!--Menu-->
-    <div class='menu'>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    @Html.ActionLink("View Created Surveys", "Index", "Surveys")
-                </li>
-                <li>
-                    @Html.ActionLink("Create a Survey", "Create", "SurveyGiver")
-                </li>
-                @*
-        <li>
-            @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
-        </li>
-                *@
-            </ul>
-            @Html.Partial("_LoginPartialGiver")
+<body1>
+    
+        <!--Header-->
+        <div class='header'>
+            <img src='\Content\img\logo.png' height="42" width="42">
         </div>
-    </div>
+
+        <!--Menu-->
+        <div class='menu'>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("View Created Surveys", "Index", "Surveys")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Create a Survey", "Create", "SurveyGiver")
+                    </li>
+                    @*
+                        <li>
+                            @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
+                        </li>
+                    *@
+                </ul>
+                @Html.Partial("_LoginPartialGiver")
+            </div>
+        </div>
 
 
-    @*<div class="header">
-            <div class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        @Html.ActionLink("Survey Says", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                        @Html.Partial("_LoginPartial")
+        @*<div class="header">
+                <div class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @Html.ActionLink("Survey Says", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            </ul>
+                            @Html.Partial("_LoginPartial")
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
 
-    <div class="container body-content">
+        <div class="container body-content">
 
-        @RenderBody()
-        <hr />
-    </div>
-    <div class="footer">
-        <footer>
+            @RenderBody()
+            <hr />
+        </div>
+        <div class="footer">
+            <footer>
 
-            <div class="footerlinks">
-                <p>
-                    @Html.ActionLink("About", "AboutGiver", "Home")  |  @Html.ActionLink("Contact", "ContactGiver", "Home")
-                    |  @Html.ActionLink("FAQ", "FAQGiver", "Home")  |  @Html.ActionLink("Privacy Policy", "PrivacyPolicyGiver", "Home")
-                </p>
+                <div class="footerlinks">
+                    <p>
+                        @Html.ActionLink("About", "AboutGiver", "Home")  |  @Html.ActionLink("Contact", "ContactGiver", "Home")
+                        |  @Html.ActionLink("FAQ", "FAQGiver", "Home")  |  @Html.ActionLink("Privacy Policy", "PrivacyPolicyGiver", "Home")
+                    </p>
 
 
-                <p>&copy; @DateTime.Now.Year - Survey Says</p>
-            </div>
-    </div>
-    @*<p>&copy; @DateTime.Now.Year - Survey Says</p>*@
-    </footer>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+                    <p>&copy; @DateTime.Now.Year - Survey Says</p>
+                </div>
+        </div>
+        @*<p>&copy; @DateTime.Now.Year - Survey Says</p>*@
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    
+</body1>
 </html>

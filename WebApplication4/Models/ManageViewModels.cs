@@ -7,6 +7,7 @@ namespace WebApplication4.Models
 {
     public class IndexViewModel
     {
+        public bool HasEmail { get; set; }
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
@@ -16,6 +17,7 @@ namespace WebApplication4.Models
 
     public class IndexGiverViewModel
     {
+        public bool HasEmail { get; set; }
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
