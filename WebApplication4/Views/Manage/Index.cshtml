@@ -8,29 +8,38 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
+    <hr />
     <h4>Survey Taker Account</h4>
     <hr />
-    <dl class="dl-horizontal">
 
-        <dt>User Name:</dt>
+    <div class="accheader"><h4>User ID Number</h4></div>
+
+    <div class="accinfo">
         <dd>
-            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @User.Identity.GetUserId()
+
         </dd>
-        <dt>Email:</dt>
+    </div>
+
+    <div class="accheader"><h4>User Name</h4></div>
+    <div class="accinfo">
         <dd>
-            @Html.Display(User.Identity.GetUserId())
+            @User.Identity.GetUserName()
+            @Model.HasEmail.ToString()
+
         </dd>
+    </div>
+    <div class="accheader"><h4>Email</h4></div>
 
-        @{var roles = new string[] { "Taker", "Giver", "Administrator" };}
+    <div class="accinfo">
 
-        @foreach (var rol in roles) {
-        <dt>@rol:</dt>
         <dd>
-            @User.IsInRole(rol)
+            @Model.HasEmail.ToString()
         </dd>
-        }
+    </div>
 
-        <dt>Password:</dt>
+    <div class="accheader"><h4>Password</h4></div>
+    <div class="accinfo">
         <dd>
             [
             @if (Model.HasPassword)
@@ -43,50 +52,64 @@
             }
             ]
         </dd>
-        @*
+    </div>
+    @*
         <dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
             @Html.ActionLink("Manage", "ManageLogins") ]
         </dd>
-        *@
-        @*
+    *@
+    @*
         Phone Numbers can used as a second factor of verification in a two-factor authentication system.
 
          See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
             for details on setting up this ASP.NET application to support two-factor authentication using SMS.
 
          Uncomment the following block after you have set up two-factor authentication
-        *@
+    *@
+    <div class="accheader"><h4>Phone Number</h4></div>
 
-        <dt>Phone Number:</dt>
-        <dd>
-            @(Model.PhoneNumber ?? "None")
-            @if (Model.PhoneNumber != null)
+    <dd>
+        @(Model.PhoneNumber ?? "None")
+        @if (Model.PhoneNumber != null)
+        {
+            <br />
+            <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+            using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                <br />
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                }
+                @Html.AntiForgeryToken()
+                <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
             }
-            else
-            {
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")]</text>
-            }
-        </dd>
+        }
+        else
+        {
+            <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber") ]</text>
+        }
+    </dd>
 
-        @*
+    <div class="accheader"><h4>User Rolls</h4></div>
+    <div class="accinfo">
+        @{var roles = new string[] { "Taker", "Giver", "Administrator" };}
+
+        @foreach (var rol in roles)
+        {
+            <dt>@rol:</dt>
+            <dd>
+                @User.IsInRole(rol)
+            </dd>
+        }
+    </div>
+
+    @*
         <dt>Two-Factor Authentication:</dt>
         <dd>
             <p>
                 There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
                 for details on setting up this ASP.NET application to support two-factor authentication.
             </p>
-        *@
-        @*@if (Model.TwoFactor)
+    *@
+    @*@if (Model.TwoFactor)
         {
             using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -105,7 +128,42 @@
                 <input type="submit" value="Enable" class="btn btn-link" />
                 </text>
             }
-        }*@
+        }
+        </dd>*@
+    <hr />
+    <h4>Statistics</h4>
+    <hr />
+    <div class="accheader"><h4>Total Surveys Ever Made By All Users</h4></div>
+    <div class="accinfo">
+        <dd>
+            @User.Identity.GetUserName()
+
         </dd>
-    </dl>
+    </div>
+
+    <div class="accheader"><h4>Total SUrveys You've Created</h4></div>
+    <div class="accinfo">
+        <dd>
+            @User.Identity.GetUserName()
+
+        </dd>
+    </div>
+
+    <div class="accheader"><h4>Total Questions Asked By All User</h4></div>
+    <div class="accinfo">
+        <dd>
+            @User.Identity.GetUserName()
+
+        </dd>
+    </div>
+    <div class="accheader"><h4>Total Questions You've Asked</h4></div>
+    <div class="accinfo">
+        <dd>
+            @User.Identity.GetUserName()
+
+        </dd>
+    </div>
+
+
+
 </div>
