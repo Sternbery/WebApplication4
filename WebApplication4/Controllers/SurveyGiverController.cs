@@ -24,7 +24,13 @@ namespace WebApplication4.Views
             if (!User.IsInRole("Giver")) {
                 return RedirectToAction("Index", "SurveyTaker");
             }
-            var surveys = db.Surveys.Include(s => s.AspNetUser);
+            //var surveys = db.Surveys.Include(s => s.AspNetUser).Where(s => s.UserID == User.Identity.Name);
+            var surveys = from s in db.Surveys
+                        join u in db.AspNetUsers
+                        on s.UserID equals u.Id
+                        orderby s.DateCreated
+                        where u.UserName == User.Identity.Name
+                        select s;
             return View(surveys.ToList());
         }
 
@@ -67,6 +73,7 @@ namespace WebApplication4.Views
             }
 
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.UserName = User.Identity.Name;
             return View();
         }
 
