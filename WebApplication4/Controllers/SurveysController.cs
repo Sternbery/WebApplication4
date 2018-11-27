@@ -39,7 +39,7 @@ namespace WebApplication4.Views
         // GET: Surveys/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.UserID = db.AspNetUsers.Where(m => User.Identity.Name == m.UserName).First().Id; //new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
