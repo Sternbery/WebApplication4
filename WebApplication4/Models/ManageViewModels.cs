@@ -5,6 +5,7 @@ using Microsoft.Owin.Security;
 
 namespace WebApplication4.Models
 {
+
     public class IndexViewModel
     {
         public bool HasEmail { get; set; }
@@ -13,6 +14,7 @@ namespace WebApplication4.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 
     public class IndexGiverViewModel
@@ -23,6 +25,7 @@ namespace WebApplication4.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 
     public class ManageLoginsViewModel
