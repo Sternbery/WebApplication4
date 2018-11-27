@@ -54,7 +54,7 @@ namespace WebApplication4.Views
             {
                 db.Surveys.Add(survey);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","SurveyGiver");
             }
 
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", survey.UserID);
