@@ -20,15 +20,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        @Html.ActionLink("View Created Surveys", "Index", "Surveys")
+                        @Html.ActionLink("View Your Created Surveys", "Index", "SurveyGiver")
+                    </li>
+                    <li>
+                        @Html.ActionLink("View All Created Surveys", "Index", "Surveys")
                     </li>
                     <li>
                         @Html.ActionLink("Create a Survey", "Create", "SurveyGiver")
                     </li>
                     @*
-                        <li>
-                            @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
-                        </li>
+        <li>
+            @Html.ActionLink("SurveyQuestions", "Index", "SurveyQuestions")
+        </li>
                     *@
                 </ul>
                 @Html.Partial("_LoginPartialGiver")
