@@ -67,7 +67,7 @@ namespace WebApplication4.Controllers
                 var surveyQuestion = passModel.MakeSurveyQuestion();
                 db.SurveyQuestions.Add(surveyQuestion);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit/"+surveyQuestion.SurveyID,"Surveys");
             }
 
             ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", passModel.SurveyID);

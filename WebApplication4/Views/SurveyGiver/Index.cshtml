@@ -10,7 +10,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "Surveys")
 </p>
 <table class="table">
     <tr>
@@ -51,9 +51,9 @@
                 @Html.DisplayFor(modelItem => item.AspNetUser.Email)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.SurveyID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.SurveyID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.SurveyID })
+                @Html.ActionLink("Edit", "Edit/"+item.SurveyID , "Surveys") |
+                @Html.ActionLink("Details", "Details/"+item.SurveyID, "Surveys") |
+                @Html.ActionLink("Delete", "Delete/"+item.SurveyID, "Surveys")
             </td>
         </tr>
     }
