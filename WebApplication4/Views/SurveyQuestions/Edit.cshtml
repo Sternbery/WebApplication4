@@ -4,6 +4,9 @@
     ViewBag.Title = "Edit";
     var SurveyIDs = ViewBag.SurveyID;
 }
+@{
+    Layout = "_Layoutgiver.cshtml";
+}
 
 <h2>Edit</h2>
 
@@ -11,75 +14,75 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>SurveyQuestion</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.QuestionID)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SurveyID, "SurveyID", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-horizontal">
+        <h4>SurveyQuestion</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.QuestionID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SurveyID, "SurveyID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="SurveyID" name="SurveyID">
+                    @foreach (WebApplication4.Models.Survey s in SurveyIDs.Items)
+                    {
+                        <option value="@s.SurveyID" @(s.SurveyID == Model.SurveyID ? "Selected" : "")>@s.Name</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.SurveyID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionTypeID, "QuestionTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("QuestionTypeID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.QuestionTypeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="col-md-10">
-            <select class="form-control" id="SurveyID" name="SurveyID">
-                @foreach (WebApplication4.Models.Survey s in SurveyIDs.Items)
+            <table class="table" id="AnswerOptionsTable">
+                <th>Header1</th>
+                <th>
+                    Header2
+                </th>
+                <th>
+                    Header3
+                </th>
+                <th></th>
+
+                @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
                 {
-                    <option value="@s.SurveyID" @(s.SurveyID==Model.SurveyID?"Selected":"") >@s.Name</option>
+                    <tr>
+                        <td>@item.Text</td>
+                    </tr>
                 }
-            </select>
-            @Html.ValidationMessageFor(model => model.SurveyID, "", new { @class = "text-danger" })
+                <tr>
+                    <td>@Html.ActionLink("Create New", "Create/" + Model.QuestionID, "SurveyMAQs")</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.QuestionTypeID, "QuestionTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("QuestionTypeID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.QuestionTypeID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="col-md-10">
-        <table class="table" id="AnswerOptionsTable">
-            <th>Header1</th>
-            <th>
-                Header2
-            </th>
-            <th>
-                Header3
-            </th>
-            <th></th>
-
-            @foreach (var item in Model.SurveyMAQs.OrderBy(i=>i.ChoiceOrder))
-            {
-            <tr>
-                <td>@item.Text</td>
-            </tr>
-            }
-            <tr>
-                <td>@Html.ActionLink("Create New","Create/"+Model.QuestionID,"SurveyMAQs")</td>
-            </tr>
-
-        </table>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
-    @Html.ActionLink("Back to Survey", "Edit/" + Model.SurveyID, "Surveys")<br/>
+    @Html.ActionLink("Back to Survey", "Edit/" + Model.SurveyID, "Surveys")<br />
     @Html.ActionLink("Back to Survey List", "Index", "Surveys")
 </div>
 
