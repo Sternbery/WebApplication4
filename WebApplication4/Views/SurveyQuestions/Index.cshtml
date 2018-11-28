@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
+@{
+    Layout = "_Layoutgiver.cshtml";
+}
 
 <h2>Index</h2>
 
@@ -23,23 +26,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Survey.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.QuestionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.QuestionID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Survey.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.QuestionID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.QuestionID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.QuestionID })
+            </td>
+        </tr>
+    }
 
 </table>

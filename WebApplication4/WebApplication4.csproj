@@ -410,6 +410,8 @@
     <Content Include="Views\SurveyMAQs\Index.cshtml" />
     <Content Include="Views\SurveyQuestions\Details.cshtml" />
     <Content Include="Views\Surveys\EditQuestionsField.cshtml" />
+    <Content Include="Views\SurveyQuestions\_Layoutgiver.cshtml" />
+    <Content Include="Views\SurveyMAQs\_Layoutgiver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
