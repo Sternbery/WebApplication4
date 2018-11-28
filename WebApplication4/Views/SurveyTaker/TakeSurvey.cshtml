@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication4.Models.SurveyQuestion>
+@{
+
+    var id = ViewBag.SurveyID;
+}
+
+<h2>TakeSurvey</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
+                @if (item.TypeEnum.TableSuffix == "SAA")
+                    //SaaM
+                    @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
+            </td>
+           <td>
+               
+           </td>
+        </tr>
+    }
+
+
+
+</table>

@@ -22,6 +22,7 @@ namespace WebApplication4.Models
             this.TagSurveys = new HashSet<TagSurvey>();
         }
     
+        public int QuestionID { get; set; }
         public int SurveyID { get; set; }
         public string UserID { get; set; }
         public string Name { get; set; }
