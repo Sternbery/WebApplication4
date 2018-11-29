@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Details";
 }
+@{
+    Layout = "_Layoutgiver.cshtml";
+}
 
 <h2>Details</h2>
 
@@ -37,6 +40,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.QuestionID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

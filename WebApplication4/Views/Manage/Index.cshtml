@@ -2,6 +2,16 @@
 @model WebApplication4.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage";
+
+    var TotalUsers = ViewBag.TotalUsers;
+    var Count = ViewBag.NumSurveys;
+    var CountAllQuestions = ViewBag.NumQuestions;
+    var CountAllSurveysTaken = ViewBag.NumTakenSurveys;
+
+
+    var CountMySurveys = ViewBag.NumMySurveys;
+    var CountSurveysITook = ViewBag.NumSurveysITook;
+
 }
 
 <h2>My Account</h2>
@@ -24,22 +34,16 @@
     <div class="accheader"><h4>User Name</h4></div>
     <div class="accinfo">
         <dd>
-            @User.Identity.GetUserName()            
+            @User.Identity.GetUserName()
 
         </dd>
     </div>
-    <div class="accheader"><h4>Email</h4></div>
 
-    <div class="accinfo">
-
-        <dd>
-            @Model.HasEmail.ToString()
-        </dd>
-    </div>
 
     <div class="accheader"><h4>Password</h4></div>
     <div class="accinfo">
         <dd>
+
             [
             @if (Model.HasPassword)
             {
@@ -130,39 +134,49 @@
         }
         </dd>*@
     <hr />
-    <h4>Statistics</h4>
+    <h4>General Statistics</h4>
     <hr />
+    <div class="accheader"><h4>Total Number of Users</h4></div>
+    <div class="accinfo">
+        <dd>
+            @TotalUsers
+        </dd>
+    </div>
+
     <div class="accheader"><h4>Total Surveys Ever Made By All Users</h4></div>
     <div class="accinfo">
         <dd>
-            @User.Identity.GetUserName()
-
+            @Count
         </dd>
     </div>
 
-    <div class="accheader"><h4>Total SUrveys You've Created</h4></div>
+    <div class="accheader"><h4>Total Surveys Taken by All Users</h4></div>
     <div class="accinfo">
         <dd>
-            @User.Identity.GetUserName()
+            @CountAllSurveysTaken
 
         </dd>
     </div>
 
-    <div class="accheader"><h4>Total Questions Asked By All User</h4></div>
+    <div class="accheader"><h4>Total Questions Asked By All Users</h4></div>
     <div class="accinfo">
         <dd>
-            @User.Identity.GetUserName()
+            @CountAllQuestions
 
         </dd>
     </div>
-    <div class="accheader"><h4>Total Questions You've Asked</h4></div>
+
+    <hr />
+    <h4>Personal Statistics</h4>
+    <hr />
+
+    <div class="accheader"><h4>Total Surveys You've Taken</h4></div>
     <div class="accinfo">
         <dd>
-            @User.Identity.GetUserName()
+            @CountSurveysITook
 
         </dd>
     </div>
-
-
 
 </div>
+

@@ -13,12 +13,84 @@ namespace WebApplication4.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private SurveySaysDB2Entities db = new SurveySaysDB2Entities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public ManageController()
         {
         }
+
+        //sire wide stats
+        //count all surveys
+        public int Count()
+        {
+            var h = db.Surveys.Count();
+            return h;
+        }
+
+        //count all questions made by all users
+        public int CountAllQuestions()
+        {
+            var h = db.SurveyQuestions.Count();
+            return h;
+        }
+
+        //count all questions made by all users
+        public int CountAllUsers()
+        {
+            var h = db.AspNetUsers.Count();
+            return h;
+        }
+
+        //count all surveys taken sitewide
+        public int SuverysTaken()
+        {
+            var h = db.SurveyResponses.Count();
+            return h;
+        }
+
+        //personal stats giver
+        //count all my surveys
+        public int CountMySurvey()
+        {
+            var h = from s in db.Surveys
+                    join u in db.AspNetUsers
+                    on s.UserID equals u.Id
+                    orderby s.DateCreated
+                    where u.UserName == User.Identity.Name
+                    select s;
+            return h.Count();
+        }
+        //count all my surveys taken 
+        public int MySuverysTaken()
+        {
+            var h = from s in db.Surveys
+                    join u in db.AspNetUsers
+                    on s.UserID equals u.Id
+                    join v in db.SurveyResponses
+                    on s.SurveyID equals v.SurveyID
+                    orderby v.DateTaken
+                    where u.UserName == User.Identity.Name
+                    select s;
+            return h.Count();
+        }
+
+        //taker stat area
+        //count all surveys ive taken
+        public int SuverysITook()
+        {
+            var h = from s in db.SurveyResponses
+                    join u in db.AspNetUsers
+                    on s.UserID equals u.Id
+                    orderby s.DateTaken
+                    where u.UserName == User.Identity.Name
+                    select s;
+            return h.Count();
+        }
+
+
+
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
@@ -64,6 +136,12 @@ namespace WebApplication4.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            ViewBag.NumSurveys = Count();
+            ViewBag.NumMySurveys = CountMySurvey();
+            ViewBag.NumQuestions = CountAllQuestions();
+            ViewBag.TotalUsers = CountAllUsers();
+            ViewBag.NumTakenSurveys = SuverysTaken();
+            ViewBag.NumSurveysITook = SuverysITook();
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
@@ -89,6 +167,12 @@ namespace WebApplication4.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            ViewBag.NumSurveys = Count();
+            ViewBag.NumMySurveys = CountMySurvey();
+            ViewBag.NumQuestions = CountAllQuestions();
+            ViewBag.TotalUsers = CountAllUsers();
+            ViewBag.NumTakenSurveys = SuverysTaken();
+            ViewBag.NumMyTakenSurveys = MySuverysTaken();
             var model = new IndexGiverViewModel
             {
                 
