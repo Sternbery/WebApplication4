@@ -44,5 +44,6 @@ namespace WebApplication4.Models
         public virtual TypeEnum TypeEnum { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SurveySAA> SurveySAAs { get; set; }
+        public object UserID { get; internal set; }
     }
 }
