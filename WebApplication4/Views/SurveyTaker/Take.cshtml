@@ -1,8 +1,9 @@
 ﻿@model WebApplication4.Models.Survey
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Take";
 }
+
 
 <h2>Edit</h2>
 
@@ -10,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Survey</h4>
         <hr />
@@ -56,6 +57,10 @@
                 @Html.ValidationMessageFor(model => model.DateLimit, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <h3>Questions</h3>
+        @{ViewBag.SurveyID = Model.SurveyID;}
+        @Html.Partial("TakeSurvey", Model.SurveyQuestions);
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

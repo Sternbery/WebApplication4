@@ -26,6 +26,7 @@ namespace WebApplication4.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
+             
     }
 
     public class ManageLoginsViewModel
