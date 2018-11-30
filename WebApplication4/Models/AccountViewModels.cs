@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication4.Models
@@ -184,5 +185,56 @@ namespace WebApplication4.Models
         public int ChoiceOrder { get; set; }
         [Required]
         public string AnswerText { get; set; }
+    }
+
+    public class ResponseAndAnswer {
+        public SurveyResponse response { get; set; }
+        public IEnumerable<SurveyAnswer> answers { get; set; }
+
+        public ResponseAndAnswer (SurveyResponse sr, IEnumerable<SurveyAnswer> sas)
+        {
+            response = sr;
+            answers = sas;
+        }
+    }
+    public class SurveyAnswer {
+        public SurveyMCA mca { get; set; }
+        public SurveyMAA maa { get; set; }
+        public SurveySAA saa { get; set; }
+
+        public SurveyAnswer(SurveyMAA maa, SurveyMCA mca, SurveySAA saa) {
+            this.maa = maa;
+            this.mca = mca;
+            this.saa = saa;
+        }
+
+        public static IEnumerable<SurveyAnswer> FromDB(IEnumerable<SurveyMAA> maas, IEnumerable<SurveyMCA> mcas, IEnumerable<SurveySAA> saas) {
+            var sa1 = maas.Select(a => new SurveyAnswer(a, null, null));
+            var sa2 = mcas.Select(a => new SurveyAnswer(null, a, null));
+            var sa3 = saas.Select(a => new SurveyAnswer(null, null, a));
+
+            var ret = sa1.Concat(sa2).Concat(sa3);
+
+            return ret;
+        }
+
+
+        public int QuestionID { get
+            {
+                if (mca != null) return mca.QuestionID;
+                if (maa != null) return maa.QuestionID;
+                if (saa != null) return saa.QuestionID;
+                throw new System.Exception("Illegal State: model does not represent an answer record");
+            } } 
+        public int ResponseID
+        {
+            get
+            {
+                if (mca != null) return mca.ResponseID;
+                if (maa != null) return maa.ResponseID;
+                if (saa != null) return saa.ResponseID;
+                throw new System.Exception("Illegal State: model does not represent an answer record");
+            }
+        }
     }
 }
