@@ -36,5 +36,7 @@ namespace WebApplication4.Models
         public virtual ICollection<SurveyMCA> SurveyMCAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SurveySAA> SurveySAAs { get; set; }
+
+
     }
 }

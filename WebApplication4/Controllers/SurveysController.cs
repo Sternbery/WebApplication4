@@ -33,13 +33,29 @@ namespace WebApplication4.Views
             {
                 return HttpNotFound();
             }
+
+
+            ViewBag.NumResponse = db.SurveyResponses.Where(sr => sr.SurveyID == survey.SurveyID).Count();
+            var questions = survey.SurveyQuestions;
+            var surveyResponse = from sr in db.SurveyResponses
+                                 where sr.SurveyID == survey.SurveyID
+                                 select sr;
+            //select new ResponseAndAnswer { response = sr, answers = SurveyAnswer.FromDB(sr.SurveyMAAs, sr.SurveyMCAs, sr.SurveySAAs)};
+
+            var s = surveyResponse.ToList().Select(sr => {
+                return new ResponseAndAnswer(sr, SurveyAnswer.FromDB(sr.SurveyMAAs, sr.SurveyMCAs, sr.SurveySAAs));
+            });
+
+            ViewBag.Questions = questions;
+            ViewBag.SurveyResponse = s.ToList();
+
             return View(survey);
         }
 
         // GET: Surveys/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.UserID = db.AspNetUsers.Where(m => User.Identity.Name == m.UserName).First().Id; //new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 

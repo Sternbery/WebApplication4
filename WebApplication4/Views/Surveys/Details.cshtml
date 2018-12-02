@@ -1,7 +1,10 @@
-﻿@model WebApplication4.Models.Survey
+﻿@model WebApplication4.Models.Survey 
 
 @{
     ViewBag.Title = "Details";
+    var h = ViewBag.SurveyResponse;
+    var q = ViewBag.Questions;
+    var num = ViewBag.NumResponse;
 }
 @{
     Layout = "_Layoutgiver.cshtml";
@@ -53,7 +56,39 @@
             @Html.DisplayFor(model => model.AspNetUser.Email)
         </dd>
 
+        <dt>
+            Numnber of Questions:
+        </dt>
+        <dd>
+            @q.Count
+        </dd>
+        <dt>
+            Numnber of Responses:
+        </dt>
+        <dd>
+            @num
+        </dd>
     </dl>
+
+    <ol>
+        @foreach (var question in q)
+        {
+            <li>@question.Text @question.QuestionTypeID @question.QuestionID
+            @if (question.QuestionTypeID == 1)
+            {
+                <ol>
+                @foreach (var maq in question.SurveyMAQs) {
+                    <li>@maq.Text</li>
+                }
+                </ol>
+            }
+            </li>
+        }
+    </ol>
+    
+
+
+
 </div>
 <p>
    @Html.ActionLink("Back to List", "Index")
