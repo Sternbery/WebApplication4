@@ -94,6 +94,30 @@ namespace WebApplication4.Views
             return View(survey);
         }
 
+        // GET: SurveyTaker/Edit/5
+        public ActionResult MultipleAnswer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SurveyMAA MAA = db.SurveyMAAs.Find(id);
+            return View(MAA);
+        }
+
+
+        public ActionResult ShortAnswer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SurveySAA SAA = db.SurveySAAs.Find(id);
+            return View(SAA);
+        }
+
+
+
         // GET: SurveyTaker/Delete/5
         public ActionResult Delete(int? id)
         {

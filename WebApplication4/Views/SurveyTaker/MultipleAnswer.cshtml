@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WebApplication4.Models.SurveyMAA>
+
+@{
+    ViewBag.Title = "MultipleAnswer";
+}
+
+
+
+<h2>MultipleAnswer</h2>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer)
+        </td>
+     </tr>
+}
+

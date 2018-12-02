@@ -411,6 +411,10 @@
     <Content Include="Views\SurveyQuestions\Details.cshtml" />
     <Content Include="Views\Surveys\EditQuestionsField.cshtml" />
     <Content Include="Views\SurveyTaker\TakeSurvey.cshtml" />
+    <Content Include="Views\SurveyTaker\Start.cshtml" />
+    <Content Include="Views\SurveyTaker\MultipleAnswer.cshtml" />
+    <Content Include="Views\SurveyTaker\MultipleChoice.cshtml" />
+    <Content Include="Views\SurveyTaker\ShortAnswer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
