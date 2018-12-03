@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
@@ -17,8 +18,9 @@ namespace WebApplication4.Views
         // GET: SurveyTaker
         public ActionResult Index()
         {
-            var surveys = db.Surveys.Include(s => s.AspNetUser);
+            var surveys = db.Surveys.Include(s => s.AspNetUser); 
             return View(surveys.ToList());
+
         }
 
         // GET: SurveyTaker/Details/5
@@ -104,6 +106,23 @@ namespace WebApplication4.Views
             SurveyMAA MAA = db.SurveyMAAs.Find(id);
             return View(MAA);
         }
+        public async Task<ActionResult> MultipleChoice(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SurveyQuestion surveyQuestion = await db.SurveyQuestions.FindAsync(id);
+            if (surveyQuestion == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+
+            return View(surveyQuestion);
+            
+        }
 
 
         public ActionResult ShortAnswer(int? id)
@@ -113,6 +132,7 @@ namespace WebApplication4.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             SurveySAA SAA = db.SurveySAAs.Find(id);
+            ViewBag.QuestionAns = SAA.TextAnswer;
             return View(SAA);
         }
 

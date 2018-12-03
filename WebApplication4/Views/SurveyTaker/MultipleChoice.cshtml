@@ -1,9 +1,16 @@
-﻿@model IEnumerable<WebApplication4.Models.SurveyMCA>
-
+﻿@model WebApplication4.Models.SurveyQuestion
 
 @{
     ViewBag.Title = "MultipleChoice";
+    var SurveyIDs = ViewBag.SurveyID;
 }
 
 <h2>MultipleChoice</h2>
 
+
+@foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
+{
+    <tr>
+        <td>@item.Text</td>
+    </tr>
+}
