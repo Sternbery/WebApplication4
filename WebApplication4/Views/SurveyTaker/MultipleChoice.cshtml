@@ -3,9 +3,11 @@
 @{
     ViewBag.Title = "MultipleChoice";
     var SurveyIDs = ViewBag.SurveyID;
+    string Quest = ViewBag.Question;
+
 }
 
-<h2>MultipleChoice</h2>
+<h2>@Quest</h2>
 
 
 <form method="post">
@@ -18,5 +20,5 @@
 
 
     }
-    <input type="submit">
+    <input type="submit" value="submit">
 </form>

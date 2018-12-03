@@ -96,7 +96,7 @@ namespace WebApplication4.Views
             return View(survey);
         }
 
-        // GET: SurveyTaker/Edit/5
+        // GET: SurveyTaker/MultipleAnswer/5
         public async Task<ActionResult> MultipleAnswer(int? id)
         {
             if (id == null)
@@ -109,6 +109,7 @@ namespace WebApplication4.Views
                 return HttpNotFound();
             }
             ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
+            ViewBag.Question = surveyQuestion.Text;
             ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
 
             return View(surveyQuestion);
@@ -116,14 +117,16 @@ namespace WebApplication4.Views
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> MultipleAnswer([Bind(Include = "MAAID,QuestionID,ChoiceOrder,Text")] SurveyMAA MAA)
+        public async Task<ActionResult> MultipleAnswer([Bind(Include = "MAAID,QuestionID,ChoiceOrder,Text,ResponseID")] SurveyMAA MAA)
         {
             if (ModelState.IsValid)
             {
+                //db.SurveyResponses.Add(MAA);
                 db.Entry(MAA).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("SurveyTaker/");
             }
+
             ViewBag.QuestionID = new SelectList(db.SurveyQuestions, "QuestionID", "Text", MAA.QuestionID);
             return View(MAA);
 
@@ -142,6 +145,7 @@ namespace WebApplication4.Views
             }
             ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
             ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+            ViewBag.Question = surveyQuestion.Text;
 
             return View(surveyQuestion);
             
@@ -161,6 +165,7 @@ namespace WebApplication4.Views
             }
             ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
             ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+            ViewBag.Question = surveyQuestion.Text;
 
             return View(surveyQuestion);
         }
