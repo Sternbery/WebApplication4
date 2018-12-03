@@ -117,17 +117,15 @@ namespace WebApplication4.Views
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> MultipleAnswer([Bind(Include = "MAAID,QuestionID,ChoiceOrder,Text,ResponseID")] SurveyMAA MAA)
+        public async Task<ActionResult> MultipleAnswer([Bind(Include = "MAAID,ResponseID,QuestionID,Answer")] SurveyMAA MAA)
         {
             if (ModelState.IsValid)
             {
-                //db.SurveyResponses.Add(MAA);
-                db.Entry(MAA).State = EntityState.Modified;
+                db.SurveyMAA.Add();
                 await db.SaveChangesAsync();
-                return RedirectToAction("SurveyTaker/");
+                return RedirectToAction("Take/" + ViewBag.SurveyID + "SurveyTaker");
             }
 
-            ViewBag.QuestionID = new SelectList(db.SurveyQuestions, "QuestionID", "Text", MAA.QuestionID);
             return View(MAA);
 
            
