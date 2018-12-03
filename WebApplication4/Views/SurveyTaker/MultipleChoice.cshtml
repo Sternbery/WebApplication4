@@ -1,0 +1,22 @@
+﻿@model WebApplication4.Models.SurveyQuestion
+
+@{
+    ViewBag.Title = "MultipleChoice";
+    var SurveyIDs = ViewBag.SurveyID;
+}
+
+<h2>MultipleChoice</h2>
+
+
+<form method="post">
+    @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
+    {
+
+        @item.Text
+        <input type="radio">
+        <br />
+
+
+    }
+    <input type="submit">
+</form>

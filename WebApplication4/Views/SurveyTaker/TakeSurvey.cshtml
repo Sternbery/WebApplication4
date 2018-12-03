@@ -2,6 +2,7 @@
 @{
 
     var id = ViewBag.SurveyID;
+    
 }
 
 <h2>TakeSurvey</h2>
@@ -23,10 +24,14 @@
                 @Html.DisplayFor(modelItem => item.Text)
             </td>
             <td>
+                @{string type = item.TypeEnum.TypeName;}
+                @{type = type.Replace(" ","");}
+                
+
                 @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
-                @if (item.TypeEnum.TableSuffix == "SAA")
-                    //SaaM
-                    @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
+                @Html.ActionLink("Start", type, new {id = item.QuestionID})
+
+
             </td>
            <td>
                

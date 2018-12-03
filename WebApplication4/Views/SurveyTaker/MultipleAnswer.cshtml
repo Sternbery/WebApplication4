@@ -1,0 +1,30 @@
+﻿@model WebApplication4.Models.SurveyQuestion
+
+@{
+    ViewBag.Title = "MultipleAnswer";
+    var SurveyIDs = ViewBag.SurveyID;
+}
+
+
+<h2>MultipleAnswer</h2>
+
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+        @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
+        {
+            
+                @item.Text
+               <input type="checkbox">
+            <br/>
+
+           
+        }
+        <input type="submit" >
+    </form>
+
+
+    
+
+
+

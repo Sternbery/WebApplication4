@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Models;
@@ -15,10 +16,11 @@ namespace WebApplication4.Views
         private SurveySaysDB2Entities db = new SurveySaysDB2Entities();
 
         // GET: SurveyTaker
-        public ActionResult Index()
+        public ActionResult  Index()
         {
-            var surveys = db.Surveys.Include(s => s.AspNetUser);
+            var surveys = db.Surveys.Include(s => s.AspNetUser); 
             return View(surveys.ToList());
+
         }
 
         // GET: SurveyTaker/Details/5
@@ -93,6 +95,77 @@ namespace WebApplication4.Views
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", survey.UserID);
             return View(survey);
         }
+
+        // GET: SurveyTaker/Edit/5
+        public async Task<ActionResult> MultipleAnswer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SurveyQuestion surveyQuestion = await db.SurveyQuestions.FindAsync(id);
+            if (surveyQuestion == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+
+            return View(surveyQuestion);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MultipleAnswer([Bind(Include = "MAAID,QuestionID,ChoiceOrder,Text")] SurveyMAA MAA)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(MAA).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("SurveyTaker/");
+            }
+            ViewBag.QuestionID = new SelectList(db.SurveyQuestions, "QuestionID", "Text", MAA.QuestionID);
+            return View(MAA);
+
+           
+        }
+        public async Task<ActionResult> MultipleChoice(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SurveyQuestion surveyQuestion = await db.SurveyQuestions.FindAsync(id);
+            if (surveyQuestion == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+
+            return View(surveyQuestion);
+            
+        }
+
+
+        public async Task<ActionResult> ShortAnswer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SurveyQuestion surveyQuestion = await db.SurveyQuestions.FindAsync(id);
+            if (surveyQuestion == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+
+            return View(surveyQuestion);
+        }
+
+
 
         // GET: SurveyTaker/Delete/5
         public ActionResult Delete(int? id)
