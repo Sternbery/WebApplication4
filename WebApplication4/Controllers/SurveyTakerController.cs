@@ -16,7 +16,7 @@ namespace WebApplication4.Views
         private SurveySaysDB2Entities db = new SurveySaysDB2Entities();
 
         // GET: SurveyTaker
-        public ActionResult Index()
+        public ActionResult  Index()
         {
             var surveys = db.Surveys.Include(s => s.AspNetUser); 
             return View(surveys.ToList());
@@ -97,14 +97,37 @@ namespace WebApplication4.Views
         }
 
         // GET: SurveyTaker/Edit/5
-        public ActionResult MultipleAnswer(int? id)
+        public async Task<ActionResult> MultipleAnswer(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SurveyMAA MAA = db.SurveyMAAs.Find(id);
+            SurveyQuestion surveyQuestion = await db.SurveyQuestions.FindAsync(id);
+            if (surveyQuestion == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+
+            return View(surveyQuestion);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MultipleAnswer([Bind(Include = "MAAID,QuestionID,ChoiceOrder,Text")] SurveyMAA MAA)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(MAA).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("SurveyTaker/");
+            }
+            ViewBag.QuestionID = new SelectList(db.SurveyQuestions, "QuestionID", "Text", MAA.QuestionID);
             return View(MAA);
+
+           
         }
         public async Task<ActionResult> MultipleChoice(int? id)
         {
@@ -125,15 +148,21 @@ namespace WebApplication4.Views
         }
 
 
-        public ActionResult ShortAnswer(int? id)
+        public async Task<ActionResult> ShortAnswer(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SurveySAA SAA = db.SurveySAAs.Find(id);
-            ViewBag.QuestionAns = SAA.TextAnswer;
-            return View(SAA);
+            SurveyQuestion surveyQuestion = await db.SurveyQuestions.FindAsync(id);
+            if (surveyQuestion == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SurveyID = new SelectList(db.Surveys, "SurveyID", "UserID", surveyQuestion.SurveyID);
+            ViewBag.QuestionTypeID = new SelectList(db.TypeEnums, "QuestionTypeID", "TypeName", surveyQuestion.QuestionTypeID);
+
+            return View(surveyQuestion);
         }
 
 

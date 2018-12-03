@@ -8,9 +8,15 @@
 <h2>MultipleChoice</h2>
 
 
-@foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
-{
-    <tr>
-        <td>@item.Text</td>
-    </tr>
-}
+<form method="post">
+    @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
+    {
+
+        @item.Text
+        <input type="radio">
+        <br />
+
+
+    }
+    <input type="submit">
+</form>
