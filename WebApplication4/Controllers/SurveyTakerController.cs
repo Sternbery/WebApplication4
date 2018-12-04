@@ -105,10 +105,11 @@ namespace WebApplication4.Views
 
             db.SurveyResponses.Add(surveyresponse);
             await db.SaveChangesAsync();
+            ViewBag.ResponseID = surveyresponse.ResponseID;
 
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", survey.UserID);
            
-            return View(survey);
+            return View(surveyresponse);
         }
 
         // POST: SurveyTaker/Take/5
@@ -192,7 +193,7 @@ namespace WebApplication4.Views
                 return RedirectToAction("Take/" + ViewBag.SurveyID + "SurveyTaker");
             }
 
-            return View(MCA);
+            return View();
         }
 
 

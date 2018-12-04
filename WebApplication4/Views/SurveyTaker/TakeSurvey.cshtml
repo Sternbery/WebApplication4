@@ -18,7 +18,7 @@
 
         <th></th>
     </tr>
-
+    <input type="hidden" , name="responseID" value="@responseID" />
     @foreach (var item in Model)
     {
         <tr>
@@ -27,17 +27,15 @@
             </td>
             <td>
                 @{string type = item.TypeEnum.TypeName;}
-                @{type = type.Replace(" ","");}
-                
+                @{type = type.Replace(" ", "");}
+
 
                 @Html.DisplayFor(modelItem => item.TypeEnum.TypeName)
-                @Html.ActionLink("Start", type, new {id = item.QuestionID})
+                @Html.ActionLink("Start", type, new { id = item.QuestionID })
 
 
             </td>
-           <td>
-               
-           </td>
+            <td></td>
         </tr>
     }
 
