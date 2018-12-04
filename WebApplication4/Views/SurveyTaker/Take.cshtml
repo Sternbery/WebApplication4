@@ -60,6 +60,7 @@
 
         <h3>Questions</h3>
         @{ViewBag.SurveyID = Model.SurveyID;}
+        
         @Html.Partial("TakeSurvey", Model.SurveyQuestions);
 
         <div class="form-group">

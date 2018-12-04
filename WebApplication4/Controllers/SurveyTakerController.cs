@@ -22,6 +22,16 @@ namespace WebApplication4.Views
             return View(surveys.ToList());
 
         }
+        //Get: SurveyTaker/StartSurvey/5
+        public ActionResult StartSurvey()
+        {
+            
+         
+     
+            SurveyResponse sr = new SurveyResponse();
+            ViewBag.SurveyResponseID = sr.ResponseID;
+            return View();
+        }
 
         // GET: SurveyTaker/Details/5
         public ActionResult Details(int? id)
@@ -63,7 +73,7 @@ namespace WebApplication4.Views
             return View(survey);
         }
 
-        // GET: SurveyTaker/Edit/5
+        // GET: SurveyTaker/Take/5
         public ActionResult Take(int? id)
         {
             if (id == null)
@@ -76,6 +86,7 @@ namespace WebApplication4.Views
                 return HttpNotFound();
             }
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", survey.UserID);
+           
             return View(survey);
         }
 
@@ -121,15 +132,14 @@ namespace WebApplication4.Views
         {
             if (ModelState.IsValid)
             {
-                db.SurveyMAA.Add();
+                db.SurveyMAAs.Add(MAA);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Take/" + ViewBag.SurveyID + "SurveyTaker");
             }
 
             return View(MAA);
-
-           
         }
+
         public async Task<ActionResult> MultipleChoice(int? id)
         {
             if (id == null)
@@ -147,6 +157,21 @@ namespace WebApplication4.Views
 
             return View(surveyQuestion);
             
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> MultipleChoice([Bind(Include = "MCAID,ResponseID,QuestionID,Answer")] SurveyMCA MCA)
+        {
+            if (ModelState.IsValid)
+            {
+                
+
+                db.SurveyMCAs.Add(MCA);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Take/" + ViewBag.SurveyID + "SurveyTaker");
+            }
+
+            return View(MCA);
         }
 
 

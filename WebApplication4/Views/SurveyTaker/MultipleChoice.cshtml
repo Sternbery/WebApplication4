@@ -4,13 +4,14 @@
     ViewBag.Title = "MultipleChoice";
     var SurveyIDs = ViewBag.SurveyID;
     string Quest = ViewBag.Question;
-
+    var responseID = ViewBag.ResponseID;
 }
 
 <h2>@Quest</h2>
 
-
+<input type="hidden" id="ResponseID" , name="ResponseID" value="@responseID" />
 <form method="post">
+    @Html.AntiForgeryToken()
     @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
     {
 
