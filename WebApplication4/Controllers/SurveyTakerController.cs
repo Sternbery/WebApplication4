@@ -23,14 +23,26 @@ namespace WebApplication4.Views
 
         }
         //Get: SurveyTaker/StartSurvey/5
-        public ActionResult StartSurvey()
+        public ActionResult StartSurvey(int? id)
         {
-            
-         
-     
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Survey survey = db.Surveys.Find(id);
+            if (survey == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", survey.UserID);
+
             SurveyResponse sr = new SurveyResponse();
             ViewBag.SurveyResponseID = sr.ResponseID;
-            return View();
+            return View("Take",survey);
+
+
+            
+            
         }
 
         // GET: SurveyTaker/Details/5
