@@ -128,9 +128,10 @@ namespace WebApplication4.Views
 
             return View(MAA);
 
-           
+
         }
-        public async Task<ActionResult> MultipleChoice(int? id)
+
+            public async Task<ActionResult> MultipleChoice(int? id)
         {
             if (id == null)
             {
