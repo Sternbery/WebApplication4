@@ -122,9 +122,10 @@ namespace WebApplication4.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SurveyMCQ surveyMCQ = await db.SurveyMCQs.FindAsync(id);
+            int qid = surveyMCQ.QuestionID;
             db.SurveyMCQs.Remove(surveyMCQ);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Edit/"+qid,"SurveyQuestions");
         }
 
         protected override void Dispose(bool disposing)
