@@ -164,6 +164,7 @@ namespace WebApplication4.Models
         public SurveyQuestion MakeSurveyQuestion() {
             return new SurveyQuestion { QuestionID = this.QuestionID, SurveyID = this.SurveyID, Text = this.Text, QuestionTypeID = this.QuestionTypeID };
         }
+       
     }
 
    

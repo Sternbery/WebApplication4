@@ -1,12 +1,15 @@
 ﻿@model WebApplication4.Models.SurveyQuestion
 @{
     ViewBag.Title = "ShortAnswer";
+    string Quest = ViewBag.Question;
+
 }
 
-<h2>ShortAnswer</h2>
+<h2>@Quest</h2>
 
-@Html.DisplayNameFor(model => model.SurveySAAs)
 
-<textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
 
-<input type="submit">
+<form method="post">
+    <input type="text" />
+    <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
+    </form>
