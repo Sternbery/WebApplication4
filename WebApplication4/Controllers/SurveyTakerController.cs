@@ -74,7 +74,7 @@ namespace WebApplication4.Views
         }
 
         // GET: SurveyTaker/Take/5
-        public ActionResult Take(int? id)
+        public async Task<ActionResult> Take(int? id)
         {
             if (id == null)
             {
@@ -85,6 +85,15 @@ namespace WebApplication4.Views
             {
                 return HttpNotFound();
             }
+
+            SurveyResponse surveyresponse = new SurveyResponse();
+            surveyresponse.SurveyID = survey.SurveyID;
+            surveyresponse.UserID = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).First().Id;
+            surveyresponse.DateTaken = System.DateTime.Now;
+
+            db.SurveyResponses.Add(surveyresponse);
+            await db.SaveChangesAsync();
+
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", survey.UserID);
            
             return View(survey);
