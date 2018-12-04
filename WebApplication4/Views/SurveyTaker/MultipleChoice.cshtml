@@ -6,6 +6,7 @@
     string Quest = ViewBag.Question;
     //Added to get letters in front of the answer
     char letter = Convert.ToChar(065);
+    var ResponseID = ViewBag.ResponseID;
     string blank = ". ";
 }
 
@@ -13,15 +14,17 @@
 
 
 <form method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" , name="responseID" value="@ResponseID" />
     @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
     {
-        <input type="radio" name ="Multi">
+        <input type="radio" name="Multi">
         @letter
         @blank
         @item.Text
-        
+
         <br />
-        letter ++;
+        letter++;
 
     }
     <input type="submit" value="submit">
