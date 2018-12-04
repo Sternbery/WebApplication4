@@ -51,25 +51,43 @@
         </div>
         <div class="col-md-10">
             <table class="table" id="AnswerOptionsTable">
-                <th>Header1</th>
-                <th>
-                    Header2
-                </th>
-                <th>
-                    Header3
-                </th>
+                <th>Multiple Answers</th>
                 <th></th>
 
                 @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
                 {
                     <tr>
                         <td>@item.Text</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit/" + item.MAQID, "SurveyMAQs") |
+                            @Html.ActionLink("Details", "Details/" + item.MAQID, "SurveyMAQs") |
+                            @Html.ActionLink("Delete", "Delete/" + item.MAQID, "SurveyMAQs")
+                        </td>
                     </tr>
                 }
                 <tr>
                     <td>@Html.ActionLink("Create New", "Create/" + Model.QuestionID, "SurveyMAQs")</td>
                 </tr>
+            </table>
 
+            <table class="table" id="ChoiceOptionsTable">
+                <th>Multiple Choices</th>
+                <th></th>
+
+                @foreach (var item in Model.SurveyMCQs.OrderBy(i => i.ChoiceOrder))
+                {
+                    <tr>
+                        <td>@item.Text</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit/" + item.MCQID, "SurveyMCQs") |
+                            @Html.ActionLink("Details", "Details/" + item.MCQID, "SurveyMCQs") |
+                            @Html.ActionLink("Delete", "Delete/" + item.MCQID, "SurveyMCQs")
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>@Html.ActionLink("Create New", "Create/" + Model.QuestionID, "SurveyMCQs")</td>
+                </tr>
             </table>
         </div>
 

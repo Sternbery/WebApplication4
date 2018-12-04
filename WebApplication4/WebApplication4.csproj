@@ -200,6 +200,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SurveyMAQsController.cs" />
+    <Compile Include="Controllers\SurveyMCQsController.cs" />
     <Compile Include="Controllers\SurveyQuestionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -416,6 +417,11 @@
     <Content Include="Views\SurveyTaker\ShortAnswer.cshtml" />
     <Content Include="Views\SurveyTaker\StartSurvey.cshtml" />
     <Content Include="Views\SurveyQuestions\Delete.cshtml" />
+    <Content Include="Views\SurveyMCQs\Create.cshtml" />
+    <Content Include="Views\SurveyMCQs\Delete.cshtml" />
+    <Content Include="Views\SurveyMCQs\Details.cshtml" />
+    <Content Include="Views\SurveyMCQs\Edit.cshtml" />
+    <Content Include="Views\SurveyMCQs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
