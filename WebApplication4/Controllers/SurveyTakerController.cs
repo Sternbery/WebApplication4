@@ -121,7 +121,7 @@ namespace WebApplication4.Views
         {
             if (ModelState.IsValid)
             {
-                db.SurveyMAA.Add();
+                db.SurveyMAAs.Add(MAA);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Take/" + ViewBag.SurveyID + "SurveyTaker");
             }
