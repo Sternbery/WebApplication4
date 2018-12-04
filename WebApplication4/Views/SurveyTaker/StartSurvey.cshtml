@@ -1,0 +1,9 @@
+﻿@model WebApplication4.Models.SurveyResponse
+@{
+    ViewBag.Title = "StartSurvey";
+    var SurveyID = ViewBag.SurveyID;
+}
+
+<h2>StartSurvey</h2>
+@Html.ActionLink("Start","Take", new { id = SurveyID })
+
