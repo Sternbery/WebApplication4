@@ -4,6 +4,9 @@
     ViewBag.Title = "MultipleAnswer";
     var SurveyIDs = ViewBag.SurveyID;
     string Quest = ViewBag.Question;
+    //Added to get letters in front of the answer
+    char letter = Convert.ToChar(065);
+    string blank = ". ";
 }
 
 
@@ -12,19 +15,21 @@
 <h2>@Quest</h2>
 
 
-    <form method="post">
-        @Html.AntiForgeryToken()
-        @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
-        {
-            
-                @item.Text
-               <input type="checkbox">
-            <br/>
+<form method="post">
+    @Html.AntiForgeryToken()
+    @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
+    {
+        <input type="checkbox">
+        @letter
+        @blank
+        @item.Text
 
-           
-        }
-        <input type="submit" value="Submit" >
-    </form>
+        <br />
+        letter++;
+
+    }
+    <input type="submit" value="Submit">
+</form>
 
 
     

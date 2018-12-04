@@ -4,21 +4,24 @@
     ViewBag.Title = "MultipleChoice";
     var SurveyIDs = ViewBag.SurveyID;
     string Quest = ViewBag.Question;
-    var responseID = ViewBag.ResponseID;
+    //Added to get letters in front of the answer
+    char letter = Convert.ToChar(065);
+    string blank = ". ";
 }
 
 <h2>@Quest</h2>
 
-<input type="hidden" id="ResponseID" , name="ResponseID" value="@responseID" />
+
 <form method="post">
-    @Html.AntiForgeryToken()
     @foreach (var item in Model.SurveyMAQs.OrderBy(i => i.ChoiceOrder))
     {
-
+        <input type="radio" name ="Multi">
+        @letter
+        @blank
         @item.Text
-        <input type="radio">
+        
         <br />
-
+        letter ++;
 
     }
     <input type="submit" value="submit">
